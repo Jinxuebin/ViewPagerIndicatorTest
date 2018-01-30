@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LinePageIndicator">
+        <!--左边距-->
+        <attr name="lpi_padding_left" format="dimension"/>
+        <!--右边距-->
+        <attr name="lpi_padding_right" format="dimension"/>
+        <!--字体大小-->
+        <attr name="lpi_font_size" format="dimension"/>
+        <!--字体颜色-->
+        <attr name="lpi_font_color" format="color"/>
+        <!--下划线颜色-->
+        <attr name="lpi_underline_color" format="color"/>
+        <!--选中下划线占用区域的比重-->
+        <attr name="lpi_underline_proportion" format="float"/>
+        <!--背景-->
+        <attr name="lpi_background" format="reference|color"/>
+    </declare-styleable>
+</resources>

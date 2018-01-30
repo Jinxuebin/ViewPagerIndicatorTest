@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jin.viewpagerindicatortest.MainActivity">
+
+    <com.jin.viewpagerindicator.LinePageIndicator
+        android:id="@+id/viewpagerindicator"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:lpi_padding_left="13dp"
+        app:lpi_padding_right="13dp"
+        app:lpi_font_size="14sp"
+        app:lpi_font_color="#000"
+        app:lpi_underline_color="#f00"
+        />
+
+</RelativeLayout>
