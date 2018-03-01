@@ -29,6 +29,11 @@ import java.util.List;
 /**
  * line page indicator
  * Created by Jin on 2018/1/27.
+ *
+ * 用法： //ViewPagerIndicator
+ * lineViewPagerIndicator = (LineViewPageIndicator) findViewById(R.id.line_viewpage_indicator);
+ * lineViewPagerIndicator.setUnderlineColor(Color.parseColor("#ff0000"));
+ * lineViewPagerIndicator.bindViewPager(mViewPager, getSupportFragmentManager(), mFragments);
  */
 
 public class LineViewPageIndicator extends View {
@@ -98,6 +103,8 @@ public class LineViewPageIndicator extends View {
      */
     private FPaint fPaint;
 
+    private int viewHeight = 120;
+
     /**
      * 用来存放每一个指针
      */
@@ -124,9 +131,16 @@ public class LineViewPageIndicator extends View {
     public LineViewPageIndicator(Context c, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(c, attrs, defStyleAttr);
 
+        initScreenAdapter(c);
+
         initAttrs(c,attrs);
         initTools(c);
         initData();
+    }
+
+    private void initScreenAdapter(Context c) {
+        viewHeight = px_dp_sp_tools.dp2px(c,40);
+        selectUnderlineHeight = px_dp_sp_tools.dp2px(c, 3);
     }
 
     private void initAttrs(Context c, AttributeSet attrs) {
@@ -500,7 +514,7 @@ public class LineViewPageIndicator extends View {
         int ws = MeasureSpec.getSize(widthMeasureSpec);
         int hs = MeasureSpec.getSize(heightMeasureSpec);
         int width = (int)calculateViewWidth();
-        setMeasuredDimension(wm == MeasureSpec.EXACTLY ? ws : width,hm == MeasureSpec.EXACTLY ? hs : 120);
+        setMeasuredDimension(wm == MeasureSpec.EXACTLY ? ws : width,hm == MeasureSpec.EXACTLY ? hs :viewHeight );
     }
 
     public void bindViewPager(ViewPager viewPager) {
@@ -527,6 +541,26 @@ public class LineViewPageIndicator extends View {
         });
     }
 
+    /**
+     * 绑定了ViewPager和ViewPagerAdapter
+     * @param viewPager viewPager
+     * @param views views
+     */
+    public void vindViewPager(ViewPager viewPager, List<View> views) {
+        if (mViewPager == null) {
+            bindViewPager(viewPager);
+        }
+        if (mViewPager != null) {
+            mViewPager.setAdapter(new MyViewPagerAdapter(views));
+        }
+    }
+
+    /**
+     * 绑定了ViewPager和FragmentPagerAdapter
+     * @param viewPager viewPager
+     * @param fm fm
+     * @param mFragments fragments
+     */
     public void bindViewPager(ViewPager viewPager, FragmentManager fm, List<Fragment> mFragments) {
         if (mViewPager == null) {
             bindViewPager(viewPager);
